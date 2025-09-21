@@ -54,7 +54,7 @@ F -->|Notifications| H[Gmail & Calendar]
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/<your-username>/ai-youth-wellness-companion.git
+git clone https://github.com/hr10j44t/ai-youth-wellness-companion.git
 ```
 
 2. Install dependencies:
