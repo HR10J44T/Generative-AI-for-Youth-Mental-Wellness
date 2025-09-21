@@ -88,4 +88,4 @@ This project is licensed under the **MIT License** – see the LICENSE file for 
 ---
 
 ## 📬 Contact
-*Email - hr10j44t@gmail.com
+Email - hr10j44t@gmail.com
