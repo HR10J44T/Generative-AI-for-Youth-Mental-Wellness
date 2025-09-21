@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - AI Youth Wellness Companion</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-heart"></i>
+                <span>Wellness Companion</span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="mood-tracker.html" class="nav-link">Mood Tracker</a>
+                <a href="ai-suggestions.html" class="nav-link">AI Suggestions</a>
+                <a href="resources.html" class="nav-link">Resources</a>
+                <a href="dashboard.html" class="nav-link active">Dashboard</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Wellness Dashboard</h1>
+            <p class="page-subtitle">Track your mental wellness journey with visual insights and data powered by Looker Studio integration.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="main-content">
+        <div class="container">
+            
+            <!-- Key Statistics -->
+            <div class="dashboard-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalEntries">0</div>
+                    <div class="stat-label">Total Mood Entries</div>
+                    <div class="stat-icon"><i class="fas fa-chart-bar"></i></div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number" id="averageMood">0</div>
+                    <div class="stat-label">Average Mood Score</div>
+                    <div class="stat-icon"><i class="fas fa-smile"></i></div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number" id="streakDays">0</div>
+                    <div class="stat-label">Day Streak</div>
+                    <div class="stat-icon"><i class="fas fa-fire"></i></div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number" id="moodTrend">--</div>
+                    <div class="stat-label">Mood Trend</div>
+                    <div class="stat-icon"><i class="fas fa-trending-up"></i></div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; margin: 40px 0;">
+                
+                <!-- Mood Trend Chart -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fas fa-chart-line"></i> Mood Trend (Last 30 Days)</h3>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="moodTrendChart" height="300"></canvas>
+                        <div id="noMoodData" style="text-align: center; padding: 40px; color: var(--text-secondary); display: none;">
+                            <i class="fas fa-chart-line" style="font-size: 3rem; margin-bottom: 20px; opacity: 0.3;"></i>
+                            <p>No mood data available yet.</p>
+                            <a href="mood-tracker.html" class="btn btn-primary" style="margin-top: 15px;">
+                                Start Tracking
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mood Distribution -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fas fa-chart-pie"></i> Mood Distribution</h3>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="moodDistributionChart" height="300"></canvas>
+                        <div id="noDistributionData" style="text-align: center; padding: 40px; color: var(--text-secondary); display: none;">
+                            <i class="fas fa-chart-pie" style="font-size: 3rem; margin-bottom: 20px; opacity: 0.3;"></i>
+                            <p>No mood distribution available yet.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Energy and Sleep Correlation -->
+            <div class="card" style="margin: 40px 0;">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-chart-area"></i> Energy & Sleep Quality Correlation</h3>
+                </div>
+                <div class="card-body">
+                    <canvas id="energySleepChart" height="200"></canvas>
+                    <div id="noCorrelationData" style="text-align: center; padding: 40px; color: var(--text-secondary); display: none;">
+                        <i class="fas fa-chart-area" style="font-size: 3rem; margin-bottom: 20px; opacity: 0.3;"></i>
+                        <p>Energy and sleep correlation will appear when you have more data entries.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Looker Studio Integration -->
+            <div class="card" style="margin: 40px 0;">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-external-link-alt"></i> Advanced Analytics with Looker Studio</h3>
+                </div>
+                <div class="card-body">
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px; align-items: center;">
+                        <div>
+                            <h4>Comprehensive Wellness Analytics</h4>
+                            <p>Access detailed analytics and customizable reports through our integrated Looker Studio dashboard. Track patterns over time, identify triggers, and gain deeper insights into your wellness journey.</p>
+                            
+                            <h5 style="margin-top: 20px;">Available Reports:</h5>
+                            <ul style="margin: 15px 0; padding-left: 20px;">
+                                <li>Monthly mood patterns and trends</li>
+                                <li>Correlation analysis between mood, sleep, and energy</li>
+                                <li>Stress level tracking and triggers</li>
+                                <li>Wellness goal progress tracking</li>
+                                <li>Custom date range analysis</li>
+                            </ul>
+                            
+                            <button onclick="openLookerStudio()" class="btn btn-primary">
+                                <i class="fas fa-external-link-alt"></i> Open Looker Studio Dashboard
+                            </button>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="width: 200px; height: 200px; background: var(--gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
+                                <i class="fas fa-chart-bar" style="font-size: 4rem; color: white;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="card" style="margin: 40px 0;">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-clock"></i> Recent Activity</h3>
+                </div>
+                <div class="card-body">
+                    <div id="recentActivity">
+                        <p style="color: var(--text-secondary);">No recent activity to display.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wellness Insights -->
+            <div class="card" style="margin: 40px 0;">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-lightbulb"></i> Wellness Insights</h3>
+                </div>
+                <div class="card-body">
+                    <div id="wellnessInsights">
+                        <p style="color: var(--text-secondary);">Insights will appear as you track more data.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="card" style="margin: 40px 0;">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-rocket"></i> Quick Actions</h3>
+                </div>
+                <div class="card-body">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                        <a href="mood-tracker.html" class="action-card">
+                            <i class="fas fa-plus-circle"></i>
+                            <span>Add Mood Entry</span>
+                        </a>
+                        <a href="ai-suggestions.html" class="action-card">
+                            <i class="fas fa-robot"></i>
+                            <span>Get AI Suggestions</span>
+                        </a>
+                        <a href="resources.html" class="action-card">
+                            <i class="fas fa-book-open"></i>
+                            <span>Browse Resources</span>
+                        </a>
+                        <button onclick="exportData()" class="action-card" style="border: none; background: white;">
+                            <i class="fas fa-download"></i>
+                            <span>Export Data</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-heart"></i>
+                    <span>Wellness Companion</span>
+                </div>
+                <div class="footer-links">
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="#privacy">Privacy</a>
+                    <a href="#terms">Terms</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AI Youth Wellness Companion. Powered by Google Services.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Dashboard-specific functionality
+        let moodTrendChart, moodDistributionChart, energySleepChart;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadDashboard();
+        });
+
+        function loadDashboard() {
+            // Update statistics
+            if (window.wellnessApp) {
+                window.wellnessApp.updateDashboard();
+            }
+
+            // Load charts
+            loadMoodTrendChart();
+            loadMoodDistributionChart();
+            loadEnergySleepChart();
+            loadRecentActivity();
+            generateWellnessInsights();
+        }
+
+        function loadMoodTrendChart() {
+            const moodData = JSON.parse(localStorage.getItem('wellnessMoodData') || '[]');
+            const canvas = document.getElementById('moodTrendChart');
+            const noDataDiv = document.getElementById('noMoodData');
+
+            if (moodData.length === 0) {
+                canvas.style.display = 'none';
+                noDataDiv.style.display = 'block';
+                return;
+            }
+
+            canvas.style.display = 'block';
+            noDataDiv.style.display = 'none';
+
+            // Prepare data for last 30 days
+            const last30Days = [];
+            const today = new Date();
+            for (let i = 29; i >= 0; i--) {
+                const date = new Date(today);
+                date.setDate(date.getDate() - i);
+                last30Days.push(date.toLocaleDateString());
+            }
+
+            const moodValues = {
+                'very-happy': 5,
+                'happy': 4,
+                'neutral': 3,
+                'sad': 2,
+                'very-sad': 1
+            };
+
+            const chartData = last30Days.map(date => {
+                const dayEntries = moodData.filter(entry => 
+                    new Date(entry.timestamp).toLocaleDateString() === date
+                );
+                if (dayEntries.length === 0) return null;
+                
+                const avgMood = dayEntries.reduce((sum, entry) => 
+                    sum + (moodValues[entry.mood] || 3), 0) / dayEntries.length;
+                return avgMood;
+            });
+
+            const ctx = canvas.getContext('2d');
+            if (moodTrendChart) {
+                moodTrendChart.destroy();
+            }
+
+            moodTrendChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: last30Days.map(date => {
+                        const d = new Date(date);
+                        return d.getMonth() + 1 + '/' + d.getDate();
+                    }),
+                    datasets: [{
+                        label: 'Mood Score',
+                        data: chartData,
+                        borderColor: '#6366f1',
+                        backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                        tension: 0.4,
+                        fill: true,
+                        spanGaps: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 5,
+                            ticks: {
+                                stepSize: 1,
+                                callback: function(value) {
+                                    const labels = ['', 'Very Sad', 'Sad', 'Neutral', 'Happy', 'Very Happy'];
+                                    return labels[value] || '';
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        }
+
+        function loadMoodDistributionChart() {
+            const moodData = JSON.parse(localStorage.getItem('wellnessMoodData') || '[]');
+            const canvas = document.getElementById('moodDistributionChart');
+            const noDataDiv = document.getElementById('noDistributionData');
+
+            if (moodData.length === 0) {
+                canvas.style.display = 'none';
+                noDataDiv.style.display = 'block';
+                return;
+            }
+
+            canvas.style.display = 'block';
+            noDataDiv.style.display = 'none';
+
+            const moodCounts = {
+                'very-happy': 0,
+                'happy': 0,
+                'neutral': 0,
+                'sad': 0,
+                'very-sad': 0
+            };
+
+            moodData.forEach(entry => {
+                if (moodCounts.hasOwnProperty(entry.mood)) {
+                    moodCounts[entry.mood]++;
+                }
+            });
+
+            const ctx = canvas.getContext('2d');
+            if (moodDistributionChart) {
+                moodDistributionChart.destroy();
+            }
+
+            moodDistributionChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Very Happy', 'Happy', 'Neutral', 'Sad', 'Very Sad'],
+                    datasets: [{
+                        data: [
+                            moodCounts['very-happy'],
+                            moodCounts['happy'],
+                            moodCounts['neutral'],
+                            moodCounts['sad'],
+                            moodCounts['very-sad']
+                        ],
+                        backgroundColor: [
+                            '#10b981',
+                            '#22c55e',
+                            '#f59e0b',
+                            '#f97316',
+                            '#ef4444'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        }
+
+        function loadEnergySleepChart() {
+            const moodData = JSON.parse(localStorage.getItem('wellnessMoodData') || '[]');
+            const canvas = document.getElementById('energySleepChart');
+            const noDataDiv = document.getElementById('noCorrelationData');
+
+            const dataWithEnergyAndSleep = moodData.filter(entry => entry.energy && entry.sleep);
+
+            if (dataWithEnergyAndSleep.length === 0) {
+                canvas.style.display = 'none';
+                noDataDiv.style.display = 'block';
+                return;
+            }
+
+            canvas.style.display = 'block';
+            noDataDiv.style.display = 'none';
+
+            const last14Days = dataWithEnergyAndSleep.slice(-14);
+            
+            const energyValues = {
+                'very-high': 5,
+                'high': 4,
+                'moderate': 3,
+                'low': 2,
+                'very-low': 1
+            };
+
+            const sleepValues = {
+                'excellent': 5,
+                'good': 4,
+                'fair': 3,
+                'poor': 2,
+                'very-poor': 1
+            };
+
+            const ctx = canvas.getContext('2d');
+            if (energySleepChart) {
+                energySleepChart.destroy();
+            }
+
+            energySleepChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: last14Days.map((_, index) => `Day ${index + 1}`),
+                    datasets: [{
+                        label: 'Energy Level',
+                        data: last14Days.map(entry => energyValues[entry.energy] || 3),
+                        borderColor: '#f59e0b',
+                        backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                        tension: 0.4
+                    }, {
+                        label: 'Sleep Quality',
+                        data: last14Days.map(entry => sleepValues[entry.sleep] || 3),
+                        borderColor: '#6366f1',
+                        backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 5
+                        }
+                    }
+                }
+            });
+        }
+
+        function loadRecentActivity() {
+            const moodData = JSON.parse(localStorage.getItem('wellnessMoodData') || '[]');
+            const container = document.getElementById('recentActivity');
+
+            if (moodData.length === 0) {
+                container.innerHTML = '<p style="color: var(--text-secondary);">No recent activity to display. <a href="mood-tracker.html">Start tracking your mood</a> to see activity here.</p>';
+                return;
+            }
+
+            const recentEntries = moodData.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp)).slice(0, 3);
+            
+            const activityHTML = recentEntries.map(entry => {
+                const moodLabels = {
+                    'very-happy': 'Very Happy',
+                    'happy': 'Happy',
+                    'neutral': 'Neutral',
+                    'sad': 'Sad',
+                    'very-sad': 'Very Sad'
+                };
+
+                return `
+                    <div style="padding: 15px; border: 1px solid var(--border); border-radius: var(--border-radius-sm); margin-bottom: 15px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span><strong>Mood logged:</strong> ${moodLabels[entry.mood]}</span>
+                            <small style="color: var(--text-secondary);">${getTimeAgo(entry.timestamp)}</small>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            container.innerHTML = activityHTML;
+        }
+
+        function generateWellnessInsights() {
+            const moodData = JSON.parse(localStorage.getItem('wellnessMoodData') || '[]');
+            const container = document.getElementById('wellnessInsights');
+
+            if (moodData.length < 7) {
+                container.innerHTML = '<p style="color: var(--text-secondary);">Track your mood for at least a week to get personalized insights.</p>';
+                return;
+            }
+
+            const insights = [];
+            
+            // Analyze mood patterns
+            const recent7Days = moodData.slice(-7);
+            const moodValues = {
+                'very-happy': 5,
+                'happy': 4,
+                'neutral': 3,
+                'sad': 2,
+                'very-sad': 1
+            };
+
+            const avgRecentMood = recent7Days.reduce((sum, entry) => sum + (moodValues[entry.mood] || 3), 0) / recent7Days.length;
+
+            if (avgRecentMood >= 4) {
+                insights.push({
+                    icon: 'fas fa-smile',
+                    color: '#10b981',
+                    title: 'Positive Trend',
+                    description: 'Your mood has been consistently positive this week. Keep up the great work!'
+                });
+            } else if (avgRecentMood < 3) {
+                insights.push({
+                    icon: 'fas fa-heart',
+                    color: '#ef4444',
+                    title: 'Self-Care Reminder',
+                    description: 'Your mood has been lower recently. Consider practicing some self-care activities or reaching out for support.'
+                });
+            }
+
+            // Check for consistency
+            if (recent7Days.length === 7) {
+                insights.push({
+                    icon: 'fas fa-fire',
+                    color: '#f59e0b',
+                    title: 'Consistency Achievement',
+                    description: 'You\'ve been tracking your mood consistently this week. This helps build valuable insights!'
+                });
+            }
+
+            // Energy and sleep correlation
+            const entriesWithEnergyAndSleep = recent7Days.filter(entry => entry.energy && entry.sleep);
+            if (entriesWithEnergyAndSleep.length >= 5) {
+                insights.push({
+                    icon: 'fas fa-chart-line',
+                    color: '#6366f1',
+                    title: 'Data Richness',
+                    description: 'You\'re providing comprehensive data with energy and sleep tracking. This enables better AI suggestions!'
+                });
+            }
+
+            if (insights.length === 0) {
+                container.innerHTML = '<p style="color: var(--text-secondary);">Continue tracking to generate personalized insights.</p>';
+                return;
+            }
+
+            const insightsHTML = insights.map(insight => `
+                <div style="display: flex; align-items: center; gap: 15px; padding: 20px; border: 1px solid var(--border); border-radius: var(--border-radius-sm); margin-bottom: 15px;">
+                    <div style="width: 50px; height: 50px; background: ${insight.color}; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <i class="${insight.icon}" style="color: white; font-size: 1.2rem;"></i>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 5px; color: var(--text-primary);">${insight.title}</h4>
+                        <p style="margin: 0; color: var(--text-secondary);">${insight.description}</p>
+                    </div>
+                </div>
+            `).join('');
+
+            container.innerHTML = insightsHTML;
+        }
+
+        function openLookerStudio() {
+            // In a real implementation, this would open the actual Looker Studio dashboard
+            // Replace with your actual Looker Studio dashboard URL
+            const lookerStudioUrl = 'https://lookerstudio.google.com/reporting/YOUR_REPORT_ID';
+            
+            // For demo purposes, show an alert
+            if (window.wellnessApp) {
+                window.wellnessApp.showAlert('Opening Looker Studio dashboard... (This would open your actual dashboard in production)', 'info');
+            }
+            
+            // Uncomment this line when you have a real Looker Studio dashboard:
+            // window.open(lookerStudioUrl, '_blank');
+        }
+
+        function exportData() {
+            if (window.wellnessApp) {
+                window.wellnessApp.exportMoodData();
+            }
+        }
+
+        // Refresh dashboard every 5 minutes
+        setInterval(loadDashboard, 5 * 60 * 1000);
+    </script>
+
+    <style>
+        .stat-card {
+            position: relative;
+            padding: 30px;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            border-left: 4px solid var(--primary-color);
+            overflow: hidden;
+        }
+
+        .stat-card .stat-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            opacity: 0.1;
+            font-size: 2rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        canvas {
+            max-height: 300px;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</body>
+</html>

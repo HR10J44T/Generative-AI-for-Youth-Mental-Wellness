@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources - AI Youth Wellness Companion</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-heart"></i>
+                <span>Wellness Companion</span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="mood-tracker.html" class="nav-link">Mood Tracker</a>
+                <a href="ai-suggestions.html" class="nav-link">AI Suggestions</a>
+                <a href="resources.html" class="nav-link active">Resources</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Wellness Resources</h1>
+            <p class="page-subtitle">Access curated mental health resources, guides, and tools to support your wellness journey. All resources are stored securely in Google Drive.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="main-content">
+        <div class="container">
+            <!-- Search and Filter -->
+            <div class="card" style="margin-bottom: 40px;">
+                <div class="card-body">
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; align-items: end;">
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label for="searchResources">Search Resources</label>
+                            <input type="text" id="searchResources" class="form-control" placeholder="Search for articles, guides, videos...">
+                        </div>
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label for="filterCategory">Filter by Category</label>
+                            <select id="filterCategory" class="form-control">
+                                <option value="">All Categories</option>
+                                <option value="anxiety">Anxiety & Stress</option>
+                                <option value="depression">Depression & Mood</option>
+                                <option value="self-care">Self-Care</option>
+                                <option value="mindfulness">Mindfulness & Meditation</option>
+                                <option value="relationships">Relationships</option>
+                                <option value="academic">Academic Stress</option>
+                                <option value="sleep">Sleep & Rest</option>
+                                <option value="exercise">Exercise & Movement</option>
+                                <option value="nutrition">Nutrition & Health</option>
+                                <option value="crisis">Crisis Support</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Crisis Resources (Always Visible) -->
+            <div class="alert alert-error" style="margin-bottom: 40px;">
+                <h3 style="margin-bottom: 15px;"><i class="fas fa-exclamation-triangle"></i> Crisis Support - Need Immediate Help?</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                    <div>
+                        <strong>National Suicide Prevention Lifeline</strong><br>
+                        <a href="tel:988" style="color: #991b1b; font-weight: bold;">Call or Text 988</a><br>
+                        <small>24/7 confidential support</small>
+                    </div>
+                    <div>
+                        <strong>Crisis Text Line</strong><br>
+                        <a href="sms:741741" style="color: #991b1b; font-weight: bold;">Text HOME to 741741</a><br>
+                        <small>24/7 crisis counseling via text</small>
+                    </div>
+                    <div>
+                        <strong>Teen Line</strong><br>
+                        <a href="tel:1-800-852-8336" style="color: #991b1b; font-weight: bold;">1-800-852-8336</a><br>
+                        <small>6pm-10pm PST, by teens for teens</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resource Categories -->
+            <div class="resources-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px;">
+                
+                <!-- Anxiety & Stress Resources -->
+                <div class="resource-category card" data-category="anxiety">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fas fa-leaf" style="color: #22c55e;"></i>
+                            Anxiety & Stress Management
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="resource-item">
+                            <h4><i class="fas fa-file-pdf"></i> Understanding Anxiety</h4>
+                            <p>A comprehensive guide to understanding anxiety symptoms and coping strategies.</p>
+                            <div class="resource-meta">
+                                <span class="tag">PDF Guide</span>
+                                <span class="tag">10 min read</span>
+                            </div>
+                            <button class="btn btn-primary btn-sm" onclick="openResource('anxiety-guide')">
+                                <i class="fas fa-external-link-alt"></i> Open
+                            </button>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <h4><i class="fas fa-play"></i> Breathing Exercises Video</h4>
+                            <p>Guided breathing techniques to help manage stress and anxiety in the moment.</p>
+                            <div class="resource-meta">
+                                <span class="tag">Video</span>
+                                <span class="tag">8 minutes</span>
+                            </div>
+                            <button class="btn btn-primary btn-sm" onclick="openResource('breathing-video')">
+                                <i class="fas fa-external-link-alt"></i> Watch
+                            </button>
+                        </div>
+
+                        <div class="resource-item">
+                            <h4><i class="fas fa-mobile-alt"></i> Anxiety Tracking Worksheet</h4>
+                            <p>Printable worksheet to help identify anxiety triggers and patterns.</p>
+                            <div class="resource-meta">
+                                <span class="tag">Worksheet</span>
+                                <span class="tag">Printable</span>
+                            </div>
+                            <button class="btn btn-primary btn-sm" onclick="openResource('anxiety-worksheet')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Depression & Mood Resources -->
+                <div class="resource-category card" data-category="depression">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fas fa-sun" style="color: #f59e0b;"></i>
+                            Depression & Mood Support
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="resource-item">
+                            <h4><i class="fas fa-book"></i> Teen Depression Guide</h4>
+                            <p>Understanding depression in teens and young adults, with practical coping strategies.</p>
+                            <div class="resource-meta">
+                                <span class="tag">Guide</span>
+                                <span class="tag">15 min read</span>
+                            </div>
+                            <button class="btn btn-primary btn-sm" onclick="openResource('depression-guide')">
+                                <i class="fas fa-external-link-alt"></i> Open
+                            </button>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <h4><i class="fas fa-heart"></i> Mood Boosting Activities</h4>
+                            <p>A collection of evidence-based activities to help improve mood and energy.</p>
+                            <div class="resource-meta">
+                                <span class="tag">Activity List</span>
+                                <span class="tag">Interactive</span>
+                            </div>
+                            <button class="btn btn-primary btn-sm" onclick="openResource('mood-activities')">
+                                <i class="fas fa-external-link-alt"></i> Explore
+                            </button>
+                        </div>
+
+                        <div class="resource-item">
+                            <h4><i class="fas fa-podcast"></i> Mental Health Podcast</h4>
+                            <p>Youth-focused podcast episodes about overcoming depression and building resilience.</p>
+                            <div class="resource-meta">
+                                <span class="tag">Podcast</span>
+                                <span class="tag">Various lengths</span>
+                            </div>
+                            <button class="btn btn-primary btn-sm" onclick="openResource('mental-health-podcast')">
+                                <i class="fas fa-external-link-alt"></i> Listen
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Self-Care Resources -->
+                <div class="resource-category card" data-category="self-care">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fas fa-spa" style="color: #8b5cf6;"></i>
+                            Self-Care & Wellness
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="resource-item">
+                            <h4><i class="fas fa-calendar-check"></i> Self-Care Planner</h4>
+                            <p>Weekly and daily self-care planning templates to build healthy routines.</p>
+                            <div class="resource-meta">
+                                <span class="tag">Planner</span>
+                                <span class="tag">Printable</span>
+                            </div>
+                            <button class="btn btn-primary btn-sm" onclick="openResource('self-care-planner')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <h4><i class="fas fa-lightbulb"></i> 50 Self-Care Ideas</h4>
+                            <p>A comprehensive list of self-care activities for different moods and situations.</p>
+                            <div class="resource-meta">
+                                <span class="tag">List</span>
+                                <span class="tag">Quick Reference</span>
+                            </div>
+                            <button class="btn btn-primary btn-sm" onclick="openResource('self-care-ideas')">
+                                <i class="fas fa-external-link-alt"></i> View
+                            </button>
+                        </div>
+
+                        <div class="resource-item">
+                            <h4><i class="fas fa-quote-left"></i> Daily Affirmations</h4>
+                            <p>Positive affirmations and mantras to support self-compassion and confidence.</p>
+                            <div class="resource-meta">
+                                <span class="tag">Daily Practice</span>
+                                <span class="tag">Audio Available</span>
+                            </div>
+                            <button class="btn btn-primary btn-sm" onclick="openResource('daily-affirmations')">
+                                <i class="fas fa-external-link-alt"></i> Access
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mindfulness Resources -->
+                <div class="resource-category card" data-category="mindfulness">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fas fa-om" style="color: #06b6d4;"></i>
+                            Mindfulness & Meditation
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="resource-item">
+                            <h4><i class="fas fa-meditation"></i> Beginner's Meditation Guide</h4>
+                            <p>Step-by-step introduction to meditation practice for complete beginners.</p>
+                            <div class="resource-meta">
+                                <span class="tag">Guide</span>
+                                <span class="tag">12 min read</span>
+                            </div>
+                            <button class="btn btn-primary btn-sm" onclick="openResource('meditation-guide')">
+                                <i class="fas fa-external-link-alt"></i> Start
+                            </button>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <h4><i class="fas fa-headphones"></i> Guided Meditations</h4>
+                            <p>Collection of 5-20 minute guided meditation sessions for different needs.</p>
+                            <div class="resource-meta">
+                                <span class="tag">Audio</span>
+                                <span class="tag">Multiple Sessions</span>
+                            </div>
+                            <button class="btn btn-primary btn-sm" onclick="openResource('guided-meditations')">
+                                <i class="fas fa-play"></i> Listen
+                            </button>
+                        </div>
+
+                        <div class="resource-item">
+                            <h4><i class="fas fa-brain"></i> Mindfulness in Daily Life</h4>
+                            <p>Practical tips for incorporating mindfulness into school, work, and daily activities.</p>
+                            <div class="resource-meta">
+                                <span class="tag">Tips</span>
+                                <span class="tag">Practical</span>
+                            </div>
+                            <button class="btn btn-primary btn-sm" onclick="openResource('daily-mindfulness')">
+                                <i class="fas fa-external-link-alt"></i> Learn
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Academic Stress Resources -->
+                <div class="resource-category card" data-category="academic">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fas fa-graduation-cap" style="color: #ef4444;"></i>
+                            Academic Stress & Study Tips
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="resource-item">
+                            <h4><i class="fas fa-clock"></i> Time Management Guide</h4>
+                            <p>Effective strategies for managing homework, projects, and extracurricular activities.</p>
+                            <div class="resource-meta">
+                                <span class="tag">Guide</span>
+                                <span class="tag">Study Tips</span>
+                            </div>
+                            <button class="btn btn-primary btn-sm" onclick="openResource('time-management')">
+                                <i class="fas fa-external-link-alt"></i> Learn
+                            </button>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <h4><i class="fas fa-chart-line"></i> Study Techniques</h4>
+                            <p>Evidence-based study methods to improve learning and reduce academic stress.</p>
+                            <div class="resource-meta">
+                                <span class="tag">Techniques</span>
+                                <span class="tag">Research-Based</span>
+                            </div>
+                            <button class="btn btn-primary btn-sm" onclick="openResource('study-techniques')">
+                                <i class="fas fa-external-link-alt"></i> Explore
+                            </button>
+                        </div>
+
+                        <div class="resource-item">
+                            <h4><i class="fas fa-clipboard-check"></i> Test Anxiety Toolkit</h4>
+                            <p>Strategies and exercises to manage test anxiety and perform better under pressure.</p>
+                            <div class="resource-meta">
+                                <span class="tag">Toolkit</span>
+                                <span class="tag">Actionable</span>
+                            </div>
+                            <button class="btn btn-primary btn-sm" onclick="openResource('test-anxiety')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sleep Resources -->
+                <div class="resource-category card" data-category="sleep">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fas fa-moon" style="color: #6366f1;"></i>
+                            Sleep & Rest
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="resource-item">
+                            <h4><i class="fas fa-bed"></i> Teen Sleep Guide</h4>
+                            <p>Understanding teen sleep patterns and creating healthy sleep habits.</p>
+                            <div class="resource-meta">
+                                <span class="tag">Guide</span>
+                                <span class="tag">Sleep Science</span>
+                            </div>
+                            <button class="btn btn-primary btn-sm" onclick="openResource('sleep-guide')">
+                                <i class="fas fa-external-link-alt"></i> Read
+                            </button>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <h4><i class="fas fa-music"></i> Sleep Meditation</h4>
+                            <p>Relaxing audio tracks and guided meditations to help you fall asleep easier.</p>
+                            <div class="resource-meta">
+                                <span class="tag">Audio</span>
+                                <span class="tag">30-60 minutes</span>
+                            </div>
+                            <button class="btn btn-primary btn-sm" onclick="openResource('sleep-meditation')">
+                                <i class="fas fa-play"></i> Listen
+                            </button>
+                        </div>
+
+                        <div class="resource-item">
+                            <h4><i class="fas fa-calendar-alt"></i> Sleep Tracker</h4>
+                            <p>Printable sleep diary to track patterns and identify factors affecting your sleep.</p>
+                            <div class="resource-meta">
+                                <span class="tag">Tracker</span>
+                                <span class="tag">Printable</span>
+                            </div>
+                            <button class="btn btn-primary btn-sm" onclick="openResource('sleep-tracker')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Resources -->
+            <div class="card" style="margin-top: 40px;">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-external-link-alt"></i> External Resources & Support</h3>
+                </div>
+                <div class="card-body">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                        <div class="external-resource">
+                            <h4>National Alliance on Mental Illness (NAMI)</h4>
+                            <p>Comprehensive mental health education, advocacy, and support resources.</p>
+                            <a href="https://www.nami.org/Your-Journey/Kids-Teens-and-Young-Adults" target="_blank" class="btn btn-secondary btn-sm">
+                                Visit NAMI
+                            </a>
+                        </div>
+                        <div class="external-resource">
+                            <h4>Mental Health America</h4>
+                            <p>Mental health screening tools and educational resources for teens.</p>
+                            <a href="https://www.mhanational.org/mental-health-teens" target="_blank" class="btn btn-secondary btn-sm">
+                                Visit MHA
+                            </a>
+                        </div>
+                        <div class="external-resource">
+                            <h4>JED Campus</h4>
+                            <p>Mental health and suicide prevention resources for college-bound students.</p>
+                            <a href="https://www.jedcampus.org/" target="_blank" class="btn btn-secondary btn-sm">
+                                Visit JED
+                            </a>
+                        </div>
+                        <div class="external-resource">
+                            <h4>Active Minds</h4>
+                            <p>Student-led mental health advocacy and awareness organization.</p>
+                            <a href="https://www.activeminds.org/" target="_blank" class="btn btn-secondary btn-sm">
+                                Visit Active Minds
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-heart"></i>
+                    <span>Wellness Companion</span>
+                </div>
+                <div class="footer-links">
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="#privacy">Privacy</a>
+                    <a href="#terms">Terms</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AI Youth Wellness Companion. Powered by Google Services.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Resource page functionality
+        function openResource(resourceId) {
+            // In a real implementation, this would open resources from Google Drive
+            // For demo purposes, we'll show an alert
+            const resourceUrls = {
+                'anxiety-guide': 'https://drive.google.com/file/d/YOUR_FILE_ID_1/view',
+                'breathing-video': 'https://drive.google.com/file/d/YOUR_FILE_ID_2/view',
+                'anxiety-worksheet': 'https://drive.google.com/file/d/YOUR_FILE_ID_3/view',
+                'depression-guide': 'https://drive.google.com/file/d/YOUR_FILE_ID_4/view',
+                'mood-activities': 'https://sites.google.com/view/YOUR_SITE_1',
+                'mental-health-podcast': 'https://drive.google.com/drive/folders/YOUR_FOLDER_ID_1',
+                // Add more resource URLs as needed
+            };
+
+            // In production, replace with actual Google Drive/Sites URLs
+            if (resourceUrls[resourceId]) {
+                // window.open(resourceUrls[resourceId], '_blank');
+                window.wellnessApp.showAlert(`Opening ${resourceId.replace('-', ' ')} resource...`, 'info');
+            } else {
+                window.wellnessApp.showAlert('Resource will be available soon. Check back later!', 'warning');
+            }
+        }
+
+        // Search and filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchResources');
+            const categoryFilter = document.getElementById('filterCategory');
+            const resourceCategories = document.querySelectorAll('.resource-category');
+
+            function filterResources() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const selectedCategory = categoryFilter.value;
+
+                resourceCategories.forEach(category => {
+                    const categoryName = category.dataset.category;
+                    const categoryText = category.textContent.toLowerCase();
+                    
+                    let showCategory = true;
+                    
+                    // Filter by category
+                    if (selectedCategory && categoryName !== selectedCategory) {
+                        showCategory = false;
+                    }
+                    
+                    // Filter by search term
+                    if (searchTerm && !categoryText.includes(searchTerm)) {
+                        showCategory = false;
+                    }
+                    
+                    category.style.display = showCategory ? 'block' : 'none';
+                });
+            }
+
+            searchInput.addEventListener('input', filterResources);
+            categoryFilter.addEventListener('change', filterResources);
+        });
+    </script>
+
+    <style>
+        .resource-item {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .resource-item:last-child {
+            border-bottom: none;
+        }
+
+        .resource-item h4 {
+            margin-bottom: 10px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .resource-item p {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .resource-meta {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: var(--surface);
+            color: var(--text-secondary);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid var(--border);
+        }
+
+        .btn-sm {
+            padding: 8px 16px;
+            font-size: 0.9rem;
+        }
+
+        .external-resource {
+            padding: 20px;
+            border: 1px solid var(--border);
+            border-radius: var(--border-radius);
+            background: var(--surface);
+        }
+
+        .external-resource h4 {
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+
+        .external-resource p {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</body>
+</html>

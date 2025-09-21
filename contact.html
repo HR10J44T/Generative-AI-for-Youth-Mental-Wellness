@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - AI Youth Wellness Companion</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-heart"></i>
+                <span>Wellness Companion</span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="mood-tracker.html" class="nav-link">Mood Tracker</a>
+                <a href="ai-suggestions.html" class="nav-link">AI Suggestions</a>
+                <a href="resources.html" class="nav-link">Resources</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link active">Contact</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Contact Us</h1>
+            <p class="page-subtitle">We're here to help and would love to hear from you. Reach out with questions, feedback, or support needs.</p>
+        </div>
+    </section>
+
+    <!-- Alert Container -->
+    <div id="alertContainer"></div>
+
+    <!-- Main Content -->
+    <section class="main-content">
+        <div class="container">
+            
+            <!-- Emergency Contact Info -->
+            <div class="alert alert-error" style="margin-bottom: 40px;">
+                <h3 style="margin-bottom: 15px;"><i class="fas fa-exclamation-triangle"></i> Need Immediate Help?</h3>
+                <p style="margin-bottom: 15px;">If you're experiencing a mental health crisis or having thoughts of self-harm, please reach out for immediate support:</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                    <div>
+                        <strong>National Suicide Prevention Lifeline</strong><br>
+                        <a href="tel:988" style="color: #991b1b; font-weight: bold; font-size: 1.2rem;">Call or Text 988</a><br>
+                        <small>24/7 confidential support</small>
+                    </div>
+                    <div>
+                        <strong>Crisis Text Line</strong><br>
+                        <a href="sms:741741" style="color: #991b1b; font-weight: bold; font-size: 1.2rem;">Text HOME to 741741</a><br>
+                        <small>24/7 crisis counseling via text</small>
+                    </div>
+                    <div>
+                        <strong>Emergency Services</strong><br>
+                        <a href="tel:911" style="color: #991b1b; font-weight: bold; font-size: 1.2rem;">Call 911</a><br>
+                        <small>For immediate medical emergencies</small>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;">
+                
+                <!-- Contact Form -->
+                <div class="form-container">
+                    <h2><i class="fas fa-envelope"></i> Send Us a Message</h2>
+                    <p>Fill out the form below and we'll get back to you as soon as possible. All messages are handled confidentially.</p>
+                    
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name *</label>
+                            <input type="text" name="name" id="name" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" name="email" id="email" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <select name="subject" id="subject" class="form-control" required>
+                                <option value="">Select a subject</option>
+                                <option value="general-inquiry">General Inquiry</option>
+                                <option value="technical-support">Technical Support</option>
+                                <option value="feedback">Feedback & Suggestions</option>
+                                <option value="privacy-concern">Privacy Concern</option>
+                                <option value="resource-request">Resource Request</option>
+                                <option value="partnership">Partnership Opportunity</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea name="message" id="message" class="form-control" rows="6" 
+                                      placeholder="Please describe your question, concern, or feedback in detail..." required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" id="privacy-agreement" style="margin-right: 10px;" required>
+                                I understand that this message will be handled confidentially and agree to the 
+                                <a href="#privacy" style="color: var(--primary-color);">Privacy Policy</a>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Information -->
+                <div>
+                    <!-- Contact Methods -->
+                    <div class="card" style="margin-bottom: 30px;">
+                        <div class="card-header">
+                            <h3 class="card-title"><i class="fas fa-phone"></i> Other Ways to Reach Us</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="contact-method" style="margin-bottom: 25px;">
+                                <h4><i class="fas fa-envelope" style="color: var(--primary-color);"></i> Email Support</h4>
+                                <p style="color: var(--text-secondary); margin-bottom: 5px;">For general inquiries and support</p>
+                                <a href="mailto:support@youthwellness.app" style="color: var(--primary-color); font-weight: 500;">support@youthwellness.app</a>
+                            </div>
+                            
+                            <div class="contact-method" style="margin-bottom: 25px;">
+                                <h4><i class="fas fa-shield-alt" style="color: var(--primary-color);"></i> Privacy Concerns</h4>
+                                <p style="color: var(--text-secondary); margin-bottom: 5px;">For privacy and data protection issues</p>
+                                <a href="mailto:privacy@youthwellness.app" style="color: var(--primary-color); font-weight: 500;">privacy@youthwellness.app</a>
+                            </div>
+
+                            <div class="contact-method">
+                                <h4><i class="fas fa-handshake" style="color: var(--primary-color);"></i> Partnerships</h4>
+                                <p style="color: var(--text-secondary); margin-bottom: 5px;">For collaboration and partnership opportunities</p>
+                                <a href="mailto:partnerships@youthwellness.app" style="color: var(--primary-color); font-weight: 500;">partnerships@youthwellness.app</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Response Times -->
+                    <div class="card" style="margin-bottom: 30px;">
+                        <div class="card-header">
+                            <h3 class="card-title"><i class="fas fa-clock"></i> Response Times</h3>
+                        </div>
+                        <div class="card-body">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                                <span>General Inquiries</span>
+                                <strong style="color: var(--primary-color);">24-48 hours</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                                <span>Technical Support</span>
+                                <strong style="color: var(--primary-color);">12-24 hours</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                                <span>Privacy Concerns</span>
+                                <strong style="color: var(--primary-color);">24 hours</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>Crisis Support</span>
+                                <strong style="color: var(--error-color);">Call 988 immediately</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Link -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title"><i class="fas fa-question-circle"></i> Frequently Asked Questions</h3>
+                        </div>
+                        <div class="card-body">
+                            <p style="margin-bottom: 20px;">Find answers to common questions about our platform, privacy, and features.</p>
+                            <button onclick="showFAQ()" class="btn btn-secondary">
+                                <i class="fas fa-external-link-alt"></i> View FAQ
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section (Hidden by default) -->
+            <div id="faqSection" class="card" style="margin-top: 40px; display: none;">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-question-circle"></i> Frequently Asked Questions</h3>
+                </div>
+                <div class="card-body">
+                    <div class="faq-item" style="margin-bottom: 30px;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 10px;">Is my data private and secure?</h4>
+                        <p style="color: var(--text-secondary); line-height: 1.6;">
+                            Yes, absolutely. All your data is stored securely using Google's enterprise-grade infrastructure. 
+                            We follow strict privacy practices and never share your personal information with third parties. 
+                            You have full control over your data and can delete it at any time.
+                        </p>
+                    </div>
+
+                    <div class="faq-item" style="margin-bottom: 30px;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 10px;">How does the AI suggestion feature work?</h4>
+                        <p style="color: var(--text-secondary); line-height: 1.6;">
+                            Our AI suggestions are powered by Google's Vertex AI platform, which analyzes your mood patterns, 
+                            preferences, and current state to provide personalized wellness recommendations. The AI uses 
+                            evidence-based mental health practices to suggest activities, resources, and coping strategies.
+                        </p>
+                    </div>
+
+                    <div class="faq-item" style="margin-bottom: 30px;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 10px;">Is this a replacement for therapy or counseling?</h4>
+                        <p style="color: var(--text-secondary); line-height: 1.6;">
+                            No, our platform is designed to complement, not replace, professional mental health care. 
+                            While we provide valuable wellness tools and insights, we always recommend consulting with 
+                            qualified mental health professionals for serious concerns or clinical treatment.
+                        </p>
+                    </div>
+
+                    <div class="faq-item" style="margin-bottom: 30px;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 10px;">Can parents or guardians access my data?</h4>
+                        <p style="color: var(--text-secondary); line-height: 1.6;">
+                            For users under 18, we follow applicable laws regarding parental consent and access. 
+                            In general, we prioritize user privacy while ensuring appropriate oversight for minors. 
+                            Specific policies vary by location and age, and we're happy to discuss your situation individually.
+                        </p>
+                    </div>
+
+                    <div class="faq-item" style="margin-bottom: 30px;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 10px;">How much does it cost to use this platform?</h4>
+                        <p style="color: var(--text-secondary); line-height: 1.6;">
+                            Our core features are completely free for all users. We believe mental wellness support should be 
+                            accessible to everyone. Some advanced analytics features may have premium options in the future, 
+                            but our commitment is to keep essential wellness tools free.
+                        </p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4 style="color: var(--text-primary); margin-bottom: 10px;">What if I'm having a mental health crisis?</h4>
+                        <p style="color: var(--text-secondary); line-height: 1.6;">
+                            If you're experiencing a mental health emergency or having thoughts of self-harm, please contact 
+                            emergency services immediately. You can call 988 for the Suicide & Crisis Lifeline, text HOME to 741741 
+                            for the Crisis Text Line, or call 911 for immediate emergency assistance.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Community Guidelines -->
+            <div class="card" style="margin-top: 40px;">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-users"></i> Community Guidelines</h3>
+                </div>
+                <div class="card-body">
+                    <p style="margin-bottom: 20px;">When contacting us or using our platform, please remember:</p>
+                    <ul style="color: var(--text-secondary); line-height: 1.8; padding-left: 20px;">
+                        <li>Be respectful and kind in all communications</li>
+                        <li>Protect your privacy - avoid sharing sensitive personal information</li>
+                        <li>Use appropriate language suitable for a youth-focused platform</li>
+                        <li>Report any concerning behavior or safety issues</li>
+                        <li>Remember that our platform is for wellness support, not crisis intervention</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-heart"></i>
+                    <span>Wellness Companion</span>
+                </div>
+                <div class="footer-links">
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="#privacy">Privacy</a>
+                    <a href="#terms">Terms</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AI Youth Wellness Companion. Powered by Google Services.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        function showFAQ() {
+            const faqSection = document.getElementById('faqSection');
+            faqSection.style.display = faqSection.style.display === 'none' ? 'block' : 'none';
+            
+            if (faqSection.style.display === 'block') {
+                faqSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Auto-resize textarea
+        document.getElementById('message').addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = this.scrollHeight + 'px';
+        });
+    </script>
+
+    <style>
+        .contact-method {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .contact-method:last-child {
+            border-bottom: none;
+        }
+
+        .contact-method h4 {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .faq-item {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0 !important;
+        }
+
+        @media (max-width: 768px) {
+            .main-content .container > div:first-child {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+    </style>
+</body>
+</html>

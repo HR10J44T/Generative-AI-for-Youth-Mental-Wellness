@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Suggestions - AI Youth Wellness Companion</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-heart"></i>
+                <span>Wellness Companion</span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="mood-tracker.html" class="nav-link">Mood Tracker</a>
+                <a href="ai-suggestions.html" class="nav-link active">AI Suggestions</a>
+                <a href="resources.html" class="nav-link">Resources</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">AI Suggestions</h1>
+            <p class="page-subtitle">Get personalized wellness recommendations powered by Google's Vertex AI, tailored to your current mood and concerns.</p>
+        </div>
+    </section>
+
+    <!-- Alert Container -->
+    <div id="alertContainer"></div>
+
+    <!-- Main Content -->
+    <section class="main-content">
+        <div class="container">
+            <!-- AI Input Form -->
+            <div class="form-container">
+                <h2><i class="fas fa-robot"></i> Get Personalized Suggestions</h2>
+                <p>Tell us how you're feeling and what's on your mind, and our AI will provide tailored wellness recommendations.</p>
+                
+                <form id="aiSuggestionsForm">
+                    <div class="form-group">
+                        <label for="currentMood">How are you feeling right now? *</label>
+                        <select id="currentMood" class="form-control" required>
+                            <option value="">Select your current mood</option>
+                            <option value="very-happy">Very Happy - Feeling great and energetic</option>
+                            <option value="happy">Happy - In a good mood</option>
+                            <option value="neutral">Neutral - Feeling okay, nothing special</option>
+                            <option value="anxious">Anxious - Feeling worried or nervous</option>
+                            <option value="stressed">Stressed - Feeling overwhelmed</option>
+                            <option value="sad">Sad - Feeling down or disappointed</option>
+                            <option value="angry">Angry - Feeling frustrated or upset</option>
+                            <option value="lonely">Lonely - Feeling isolated or disconnected</option>
+                            <option value="confused">Confused - Feeling uncertain or unclear</option>
+                            <option value="tired">Tired - Feeling exhausted or drained</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="concern">What's your main concern or goal today? *</label>
+                        <select id="concern" class="form-control" required>
+                            <option value="">Select your main concern</option>
+                            <option value="manage-stress">Manage stress and anxiety</option>
+                            <option value="improve-mood">Improve my mood</option>
+                            <option value="better-sleep">Get better sleep</option>
+                            <option value="increase-energy">Increase energy and motivation</option>
+                            <option value="social-connection">Connect with others</option>
+                            <option value="self-confidence">Build self-confidence</option>
+                            <option value="academic-pressure">Deal with academic pressure</option>
+                            <option value="family-issues">Navigate family relationships</option>
+                            <option value="peer-pressure">Handle peer pressure</option>
+                            <option value="future-planning">Plan for the future</option>
+                            <option value="healthy-habits">Develop healthy habits</option>
+                            <option value="mindfulness">Practice mindfulness</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="additionalContext">Additional context (optional)</label>
+                        <textarea id="additionalContext" class="form-control" rows="4" 
+                                  placeholder="Share any additional details that might help us provide better suggestions..."></textarea>
+                    </div>
+
+                    <button type="button" id="getSuggestions" class="btn btn-primary">
+                        <i class="fas fa-magic"></i> Get AI Suggestions
+                    </button>
+                </form>
+            </div>
+
+            <!-- Suggestions Display -->
+            <div id="suggestionsContainer" class="suggestions-container" style="margin-top: 40px;">
+                <!-- Suggestions will be displayed here -->
+            </div>
+
+            <!-- Sample Suggestions (shown when no AI suggestions are available) -->
+            <div class="card" style="margin-top: 40px;">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-lightbulb"></i> Sample Wellness Suggestions</h3>
+                </div>
+                <div class="card-body">
+                    <div class="suggestions-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                        <div class="suggestion-card card">
+                            <div class="card-body">
+                                <h4 class="card-title">🧘‍♀️ Mindful Breathing</h4>
+                                <p>Practice deep breathing exercises for 5-10 minutes to reduce stress and anxiety. Focus on inhaling for 4 counts, holding for 4, and exhaling for 6.</p>
+                                <div class="suggestion-tags">
+                                    <span class="tag">Stress Relief</span>
+                                    <span class="tag">Mindfulness</span>
+                                    <span class="tag">Quick</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="suggestion-card card">
+                            <div class="card-body">
+                                <h4 class="card-title">🚶‍♂️ Nature Walk</h4>
+                                <p>Take a 15-20 minute walk outside to boost your mood and energy. Fresh air and movement can significantly improve mental wellness.</p>
+                                <div class="suggestion-tags">
+                                    <span class="tag">Mood Boost</span>
+                                    <span class="tag">Exercise</span>
+                                    <span class="tag">Outdoors</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="suggestion-card card">
+                            <div class="card-body">
+                                <h4 class="card-title">📝 Gratitude Journal</h4>
+                                <p>Write down three things you're grateful for today. This simple practice can shift your focus to positive aspects of your life.</p>
+                                <div class="suggestion-tags">
+                                    <span class="tag">Positivity</span>
+                                    <span class="tag">Reflection</span>
+                                    <span class="tag">Daily Practice</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="suggestion-card card">
+                            <div class="card-body">
+                                <h4 class="card-title">🎵 Music Therapy</h4>
+                                <p>Listen to calming or uplifting music for 10-15 minutes. Music can help regulate emotions and provide comfort.</p>
+                                <div class="suggestion-tags">
+                                    <span class="tag">Emotional Regulation</span>
+                                    <span class="tag">Relaxation</span>
+                                    <span class="tag">Self-Care</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="suggestion-card card">
+                            <div class="card-body">
+                                <h4 class="card-title">💬 Reach Out</h4>
+                                <p>Connect with a trusted friend, family member, or counselor. Social support is crucial for mental wellness.</p>
+                                <div class="suggestion-tags">
+                                    <span class="tag">Social Support</span>
+                                    <span class="tag">Connection</span>
+                                    <span class="tag">Help</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="suggestion-card card">
+                            <div class="card-body">
+                                <h4 class="card-title">🛌 Sleep Hygiene</h4>
+                                <p>Establish a calming bedtime routine. Good sleep is fundamental to mental and physical wellness.</p>
+                                <div class="suggestion-tags">
+                                    <span class="tag">Sleep</span>
+                                    <span class="tag">Routine</span>
+                                    <span class="tag">Health</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Information -->
+            <div class="card" style="margin-top: 40px;">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-info-circle"></i> About Our AI Suggestions</h3>
+                </div>
+                <div class="card-body">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+                        <div>
+                            <h4><i class="fas fa-brain" style="color: var(--primary-color);"></i> Powered by Vertex AI</h4>
+                            <p>Our suggestions are generated using Google's advanced Vertex AI platform, trained on evidence-based mental health practices.</p>
+                        </div>
+                        <div>
+                            <h4><i class="fas fa-user-check" style="color: var(--primary-color);"></i> Personalized</h4>
+                            <p>Recommendations are tailored to your mood patterns, preferences, and current emotional state for maximum relevance.</p>
+                        </div>
+                        <div>
+                            <h4><i class="fas fa-shield-alt" style="color: var(--primary-color);"></i> Safe & Private</h4>
+                            <p>Your data is processed securely through Google's infrastructure with strict privacy protections.</p>
+                        </div>
+                        <div>
+                            <h4><i class="fas fa-clock" style="color: var(--primary-color);"></i> Real-time</h4>
+                            <p>Get instant suggestions whenever you need support, available 24/7 to help with your wellness journey.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-warning" style="margin-top: 20px;">
+                        <strong>Important:</strong> These AI suggestions are for general wellness support and are not a substitute for professional mental health care. If you're experiencing serious mental health concerns, please reach out to a qualified healthcare provider or crisis hotline.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-heart"></i>
+                    <span>Wellness Companion</span>
+                </div>
+                <div class="footer-links">
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="#privacy">Privacy</a>
+                    <a href="#terms">Terms</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AI Youth Wellness Companion. Powered by Google Services.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <style>
+        .suggestion-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .suggestion-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .suggestion-tags {
+            margin-top: 15px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: var(--primary-color);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .suggestions-container .card {
+            margin-bottom: 20px;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</body>
+</html>

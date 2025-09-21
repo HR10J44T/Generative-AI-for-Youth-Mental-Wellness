@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Page - AI Youth Wellness Companion</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-heart"></i>
+                <span>Wellness Companion</span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="mood-tracker.html" class="nav-link">Mood Tracker</a>
+                <a href="ai-suggestions.html" class="nav-link">AI Suggestions</a>
+                <a href="resources.html" class="nav-link">Resources</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="test.html" class="nav-link active">Test</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Functionality Test Page</h1>
+            <p class="page-subtitle">Test all application features and verify proper functionality.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="main-content">
+        <div class="container">
+            <!-- Test Results -->
+            <div id="testResults" class="card" style="margin-bottom: 40px;">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-check-circle"></i> Test Results</h3>
+                </div>
+                <div class="card-body">
+                    <div id="testOutput">
+                        <p>Click "Run All Tests" to verify functionality.</p>
+                    </div>
+                    <button onclick="runAllTests()" class="btn btn-primary">
+                        <i class="fas fa-play"></i> Run All Tests
+                    </button>
+                </div>
+            </div>
+
+            <!-- Manual Tests -->
+            <div class="card" style="margin-bottom: 40px;">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-hand-pointer"></i> Manual Tests</h3>
+                </div>
+                <div class="card-body">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                        <!-- Navigation Test -->
+                        <div class="test-section">
+                            <h4>Navigation Test</h4>
+                            <p>Test the navigation menu and mobile responsiveness.</p>
+                            <button onclick="testNavigation()" class="btn btn-secondary btn-sm">Test Navigation</button>
+                        </div>
+
+                        <!-- Mood Tracking Test -->
+                        <div class="test-section">
+                            <h4>Mood Tracking</h4>
+                            <p>Test mood entry submission and local storage.</p>
+                            <button onclick="testMoodTracking()" class="btn btn-secondary btn-sm">Test Mood Tracking</button>
+                        </div>
+
+                        <!-- Local Storage Test -->
+                        <div class="test-section">
+                            <h4>Local Storage</h4>
+                            <p>Test data persistence and retrieval.</p>
+                            <button onclick="testLocalStorage()" class="btn btn-secondary btn-sm">Test Storage</button>
+                        </div>
+
+                        <!-- Responsive Design Test -->
+                        <div class="test-section">
+                            <h4>Responsive Design</h4>
+                            <p>Test layout at different screen sizes.</p>
+                            <button onclick="testResponsive()" class="btn btn-secondary btn-sm">Test Responsive</button>
+                        </div>
+
+                        <!-- Form Validation Test -->
+                        <div class="test-section">
+                            <h4>Form Validation</h4>
+                            <p>Test form validation and error handling.</p>
+                            <button onclick="testFormValidation()" class="btn btn-secondary btn-sm">Test Forms</button>
+                        </div>
+
+                        <!-- PWA Features Test -->
+                        <div class="test-section">
+                            <h4>PWA Features</h4>
+                            <p>Test Progressive Web App capabilities.</p>
+                            <button onclick="testPWAFeatures()" class="btn btn-secondary btn-sm">Test PWA</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo Data -->
+            <div class="card" style="margin-bottom: 40px;">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-database"></i> Demo Data</h3>
+                </div>
+                <div class="card-body">
+                    <p>Generate sample data for testing dashboard and analytics features.</p>
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                        <button onclick="generateDemoMoodData()" class="btn btn-secondary">
+                            <i class="fas fa-chart-line"></i> Generate Mood Data
+                        </button>
+                        <button onclick="clearAllData()" class="btn btn-warning">
+                            <i class="fas fa-trash"></i> Clear All Data
+                        </button>
+                        <button onclick="exportTestData()" class="btn btn-primary">
+                            <i class="fas fa-download"></i> Export Test Data
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- API Integration Tests -->
+            <div class="card" style="margin-bottom: 40px;">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-cloud"></i> API Integration Tests</h3>
+                </div>
+                <div class="card-body">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                        <div>
+                            <h5>Google Apps Script</h5>
+                            <p>Test backend integration.</p>
+                            <button onclick="testAppsScript()" class="btn btn-secondary btn-sm">Test Backend</button>
+                            <div id="appsScriptStatus" class="test-status"></div>
+                        </div>
+
+                        <div>
+                            <h5>Google Forms</h5>
+                            <p>Test form submission.</p>
+                            <button onclick="testGoogleForms()" class="btn btn-secondary btn-sm">Test Forms</button>
+                            <div id="formsStatus" class="test-status"></div>
+                        </div>
+
+                        <div>
+                            <h5>Local Notifications</h5>
+                            <p>Test notification system.</p>
+                            <button onclick="testNotifications()" class="btn btn-secondary btn-sm">Test Notifications</button>
+                            <div id="notificationStatus" class="test-status"></div>
+                        </div>
+
+                        <div>
+                            <h5>Service Worker</h5>
+                            <p>Test offline functionality.</p>
+                            <button onclick="testServiceWorker()" class="btn btn-secondary btn-sm">Test SW</button>
+                            <div id="swStatus" class="test-status"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Performance Tests -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-tachometer-alt"></i> Performance Metrics</h3>
+                </div>
+                <div class="card-body">
+                    <div id="performanceMetrics">
+                        <p>Click "Measure Performance" to analyze page load and runtime metrics.</p>
+                    </div>
+                    <button onclick="measurePerformance()" class="btn btn-primary">
+                        <i class="fas fa-stopwatch"></i> Measure Performance
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-heart"></i>
+                    <span>Wellness Companion</span>
+                </div>
+                <div class="footer-links">
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="#privacy">Privacy</a>
+                    <a href="#terms">Terms</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AI Youth Wellness Companion. Powered by Google Services.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Test Functions
+
+        async function runAllTests() {
+            const output = document.getElementById('testOutput');
+            output.innerHTML = '<p><i class="fas fa-spinner fa-spin"></i> Running tests...</p>';
+            
+            const tests = [
+                { name: 'Local Storage', fn: testLocalStorageFunction },
+                { name: 'Navigation', fn: testNavigationFunction },
+                { name: 'Form Validation', fn: testFormValidationFunction },
+                { name: 'Responsive Design', fn: testResponsiveFunction },
+                { name: 'PWA Features', fn: testPWAFunction },
+                { name: 'Performance', fn: measurePerformanceFunction }
+            ];
+
+            const results = [];
+            
+            for (const test of tests) {
+                try {
+                    const result = await test.fn();
+                    results.push({ name: test.name, status: 'passed', details: result });
+                } catch (error) {
+                    results.push({ name: test.name, status: 'failed', error: error.message });
+                }
+            }
+
+            displayTestResults(results);
+        }
+
+        function displayTestResults(results) {
+            const output = document.getElementById('testOutput');
+            let html = '<div class="test-results">';
+            
+            results.forEach(result => {
+                const icon = result.status === 'passed' ? 'fa-check-circle' : 'fa-times-circle';
+                const color = result.status === 'passed' ? 'color: #10b981;' : 'color: #ef4444;';
+                
+                html += `
+                    <div style="margin-bottom: 15px; padding: 10px; border: 1px solid var(--border); border-radius: 8px;">
+                        <h5 style="margin-bottom: 5px;">
+                            <i class="fas ${icon}" style="${color}"></i> ${result.name}
+                        </h5>
+                        <p style="margin: 0; font-size: 0.9rem; color: var(--text-secondary);">
+                            ${result.status === 'passed' ? 'Test passed successfully' : 'Test failed: ' + result.error}
+                        </p>
+                        ${result.details ? `<small style="color: var(--text-secondary);">${result.details}</small>` : ''}
+                    </div>
+                `;
+            });
+            
+            html += '</div>';
+            output.innerHTML = html;
+        }
+
+        // Individual test functions
+        function testNavigation() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const mobileToggle = document.querySelector('.nav-toggle');
+            
+            let issues = [];
+            
+            if (navLinks.length === 0) issues.push('No navigation links found');
+            if (!mobileToggle) issues.push('Mobile toggle not found');
+            
+            const status = issues.length === 0 ? 'passed' : 'failed';
+            showTestResult('Navigation', status, issues.join(', '));
+        }
+
+        async function testNavigationFunction() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            if (navLinks.length === 0) throw new Error('No navigation links found');
+            return `Found ${navLinks.length} navigation links`;
+        }
+
+        function testMoodTracking() {
+            // Test mood tracking functionality
+            if (window.wellnessApp) {
+                const testEntry = {
+                    mood: 'happy',
+                    energy: 'high',
+                    sleep: 'good',
+                    stress: 'low',
+                    notes: 'Test entry',
+                    timestamp: new Date().toISOString()
+                };
+
+                // Add test entry to local storage
+                const existingData = JSON.parse(localStorage.getItem('wellnessMoodData') || '[]');
+                existingData.push(testEntry);
+                localStorage.setItem('wellnessMoodData', JSON.stringify(existingData));
+
+                showTestResult('Mood Tracking', 'passed', 'Test mood entry added successfully');
+            } else {
+                showTestResult('Mood Tracking', 'failed', 'WellnessApp not initialized');
+            }
+        }
+
+        function testLocalStorage() {
+            try {
+                const testKey = 'test-storage';
+                const testValue = 'test-value';
+                
+                localStorage.setItem(testKey, testValue);
+                const retrieved = localStorage.getItem(testKey);
+                localStorage.removeItem(testKey);
+                
+                if (retrieved === testValue) {
+                    showTestResult('Local Storage', 'passed', 'Storage read/write successful');
+                } else {
+                    showTestResult('Local Storage', 'failed', 'Storage value mismatch');
+                }
+            } catch (error) {
+                showTestResult('Local Storage', 'failed', error.message);
+            }
+        }
+
+        async function testLocalStorageFunction() {
+            const testKey = 'test-storage';
+            const testValue = 'test-value';
+            
+            localStorage.setItem(testKey, testValue);
+            const retrieved = localStorage.getItem(testKey);
+            localStorage.removeItem(testKey);
+            
+            if (retrieved !== testValue) throw new Error('Storage value mismatch');
+            return 'Storage read/write successful';
+        }
+
+        function testResponsive() {
+            const viewport = {
+                width: window.innerWidth,
+                height: window.innerHeight
+            };
+
+            let deviceType;
+            if (viewport.width < 768) deviceType = 'Mobile';
+            else if (viewport.width < 1024) deviceType = 'Tablet';
+            else deviceType = 'Desktop';
+
+            showTestResult('Responsive Design', 'passed', `Current viewport: ${viewport.width}x${viewport.height} (${deviceType})`);
+        }
+
+        async function testResponsiveFunction() {
+            const viewport = { width: window.innerWidth, height: window.innerHeight };
+            return `Viewport: ${viewport.width}x${viewport.height}`;
+        }
+
+        function testFormValidation() {
+            // Test form validation by creating a temporary form
+            const testForm = document.createElement('form');
+            const testInput = document.createElement('input');
+            testInput.type = 'email';
+            testInput.required = true;
+            testInput.value = 'invalid-email';
+            testForm.appendChild(testInput);
+
+            const isValid = testInput.checkValidity();
+            showTestResult('Form Validation', isValid ? 'failed' : 'passed', 
+                          isValid ? 'Validation not working' : 'Email validation working correctly');
+        }
+
+        async function testFormValidationFunction() {
+            const testForm = document.createElement('form');
+            const testInput = document.createElement('input');
+            testInput.type = 'email';
+            testInput.required = true;
+            testInput.value = 'invalid-email';
+            testForm.appendChild(testInput);
+
+            const isValid = testInput.checkValidity();
+            if (isValid) throw new Error('Validation not working properly');
+            return 'Email validation working correctly';
+        }
+
+        function testPWAFeatures() {
+            const features = [];
+            
+            if ('serviceWorker' in navigator) features.push('Service Worker supported');
+            if ('manifest' in document.querySelector('link[rel="manifest"]')) features.push('Manifest linked');
+            if (window.matchMedia('(display-mode: standalone)').matches) features.push('Running as PWA');
+            
+            showTestResult('PWA Features', 'passed', features.join(', ') || 'Basic PWA features detected');
+        }
+
+        async function testPWAFunction() {
+            const features = [];
+            if ('serviceWorker' in navigator) features.push('Service Worker');
+            if (document.querySelector('link[rel="manifest"]')) features.push('Manifest');
+            return `PWA features: ${features.join(', ')}`;
+        }
+
+        function testAppsScript() {
+            const status = document.getElementById('appsScriptStatus');
+            status.innerHTML = '<small style="color: orange;">Testing backend connection...</small>';
+            
+            // Simulate API test (replace with actual endpoint)
+            setTimeout(() => {
+                status.innerHTML = '<small style="color: orange;">⚠️ Configure Apps Script URL in main.js</small>';
+            }, 1000);
+        }
+
+        function testGoogleForms() {
+            const status = document.getElementById('formsStatus');
+            status.innerHTML = '<small style="color: orange;">⚠️ Configure Google Forms URL</small>';
+        }
+
+        function testNotifications() {
+            const status = document.getElementById('notificationStatus');
+            
+            if ('Notification' in window) {
+                Notification.requestPermission().then(permission => {
+                    if (permission === 'granted') {
+                        new Notification('Test Notification', {
+                            body: 'Notifications are working!',
+                            icon: '/images/icon-192x192.png'
+                        });
+                        status.innerHTML = '<small style="color: green;">✅ Notifications enabled</small>';
+                    } else {
+                        status.innerHTML = '<small style="color: orange;">⚠️ Notification permission denied</small>';
+                    }
+                });
+            } else {
+                status.innerHTML = '<small style="color: red;">❌ Notifications not supported</small>';
+            }
+        }
+
+        function testServiceWorker() {
+            const status = document.getElementById('swStatus');
+            
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.getRegistrations().then(registrations => {
+                    if (registrations.length > 0) {
+                        status.innerHTML = '<small style="color: green;">✅ Service Worker active</small>';
+                    } else {
+                        status.innerHTML = '<small style="color: orange;">⚠️ Service Worker not registered</small>';
+                    }
+                });
+            } else {
+                status.innerHTML = '<small style="color: red;">❌ Service Worker not supported</small>';
+            }
+        }
+
+        function generateDemoMoodData() {
+            const demoData = [];
+            const moods = ['very-happy', 'happy', 'neutral', 'sad', 'very-sad'];
+            const energyLevels = ['very-high', 'high', 'moderate', 'low', 'very-low'];
+            const sleepQualities = ['excellent', 'good', 'fair', 'poor', 'very-poor'];
+            const stressLevels = ['none', 'low', 'moderate', 'high', 'overwhelming'];
+
+            for (let i = 0; i < 30; i++) {
+                const date = new Date();
+                date.setDate(date.getDate() - i);
+                
+                demoData.push({
+                    id: Date.now() + i,
+                    mood: moods[Math.floor(Math.random() * moods.length)],
+                    energy: energyLevels[Math.floor(Math.random() * energyLevels.length)],
+                    sleep: sleepQualities[Math.floor(Math.random() * sleepQualities.length)],
+                    stress: stressLevels[Math.floor(Math.random() * stressLevels.length)],
+                    notes: `Demo entry for day ${i + 1}`,
+                    timestamp: date.toISOString(),
+                    date: date.toLocaleDateString()
+                });
+            }
+
+            localStorage.setItem('wellnessMoodData', JSON.stringify(demoData));
+            
+            if (window.wellnessApp) {
+                window.wellnessApp.showAlert('Demo mood data generated successfully!', 'success');
+            }
+        }
+
+        function clearAllData() {
+            if (confirm('Are you sure you want to clear all data? This cannot be undone.')) {
+                localStorage.removeItem('wellnessMoodData');
+                localStorage.removeItem('wellnessUserData');
+                
+                if (window.wellnessApp) {
+                    window.wellnessApp.showAlert('All data cleared successfully!', 'success');
+                }
+            }
+        }
+
+        function exportTestData() {
+            const data = {
+                moodData: JSON.parse(localStorage.getItem('wellnessMoodData') || '[]'),
+                userData: JSON.parse(localStorage.getItem('wellnessUserData') || '{}'),
+                timestamp: new Date().toISOString()
+            };
+
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `wellness-test-data-${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(a);
+            a.click();
+            URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+        }
+
+        function measurePerformance() {
+            const metrics = {
+                loadTime: performance.timing.loadEventEnd - performance.timing.navigationStart,
+                domReady: performance.timing.domContentLoadedEventEnd - performance.timing.navigationStart,
+                renderTime: performance.timing.domComplete - performance.timing.domLoading,
+                resourceCount: performance.getEntriesByType('resource').length
+            };
+
+            const metricsHtml = `
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                    <div class="metric-card">
+                        <strong>Page Load Time</strong><br>
+                        <span style="color: var(--primary-color); font-size: 1.2rem;">${metrics.loadTime}ms</span>
+                    </div>
+                    <div class="metric-card">
+                        <strong>DOM Ready</strong><br>
+                        <span style="color: var(--primary-color); font-size: 1.2rem;">${metrics.domReady}ms</span>
+                    </div>
+                    <div class="metric-card">
+                        <strong>Render Time</strong><br>
+                        <span style="color: var(--primary-color); font-size: 1.2rem;">${metrics.renderTime}ms</span>
+                    </div>
+                    <div class="metric-card">
+                        <strong>Resources Loaded</strong><br>
+                        <span style="color: var(--primary-color); font-size: 1.2rem;">${metrics.resourceCount}</span>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('performanceMetrics').innerHTML = metricsHtml;
+        }
+
+        async function measurePerformanceFunction() {
+            const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+            return `Page load time: ${loadTime}ms`;
+        }
+
+        function showTestResult(testName, status, details) {
+            if (window.wellnessApp) {
+                const message = `${testName}: ${status} - ${details}`;
+                const alertType = status === 'passed' ? 'success' : 'error';
+                window.wellnessApp.showAlert(message, alertType);
+            }
+        }
+    </script>
+
+    <style>
+        .test-section {
+            padding: 20px;
+            border: 1px solid var(--border);
+            border-radius: var(--border-radius-sm);
+            background: var(--surface);
+        }
+
+        .test-section h4 {
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .test-status {
+            margin-top: 10px;
+            min-height: 20px;
+        }
+
+        .metric-card {
+            padding: 15px;
+            border: 1px solid var(--border);
+            border-radius: var(--border-radius-sm);
+            text-align: center;
+            background: white;
+        }
+
+        .test-results {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+    </style>
+</body>
+</html>

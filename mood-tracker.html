@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood Tracker - AI Youth Wellness Companion</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-heart"></i>
+                <span>Wellness Companion</span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="mood-tracker.html" class="nav-link active">Mood Tracker</a>
+                <a href="ai-suggestions.html" class="nav-link">AI Suggestions</a>
+                <a href="resources.html" class="nav-link">Resources</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Mood Tracker</h1>
+            <p class="page-subtitle">Track your daily emotions and mental wellness patterns. Your data helps us provide better personalized suggestions.</p>
+        </div>
+    </section>
+
+    <!-- Alert Container -->
+    <div id="alertContainer"></div>
+
+    <!-- Main Content -->
+    <section class="main-content">
+        <div class="container">
+            <div class="form-container">
+                <h2><i class="fas fa-smile"></i> How are you feeling today?</h2>
+                <p>Select your current mood and provide additional details to help track your wellness journey.</p>
+                
+                <form id="moodForm">
+                    <!-- Mood Selection -->
+                    <div class="form-group">
+                        <label>Current Mood *</label>
+                        <div class="mood-buttons">
+                            <button type="button" class="mood-btn" data-mood="very-happy">
+                                <i class="fas fa-laugh-beam" style="color: #10b981;"></i>
+                                <span>Very Happy</span>
+                            </button>
+                            <button type="button" class="mood-btn" data-mood="happy">
+                                <i class="fas fa-smile" style="color: #22c55e;"></i>
+                                <span>Happy</span>
+                            </button>
+                            <button type="button" class="mood-btn" data-mood="neutral">
+                                <i class="fas fa-meh" style="color: #f59e0b;"></i>
+                                <span>Neutral</span>
+                            </button>
+                            <button type="button" class="mood-btn" data-mood="sad">
+                                <i class="fas fa-frown" style="color: #f97316;"></i>
+                                <span>Sad</span>
+                            </button>
+                            <button type="button" class="mood-btn" data-mood="very-sad">
+                                <i class="fas fa-sad-tear" style="color: #ef4444;"></i>
+                                <span>Very Sad</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Energy Level -->
+                    <div class="form-group">
+                        <label for="energy">Energy Level</label>
+                        <select name="energy" id="energy" class="form-control">
+                            <option value="">Select energy level</option>
+                            <option value="very-high">Very High - Feeling energetic and motivated</option>
+                            <option value="high">High - Good energy for activities</option>
+                            <option value="moderate">Moderate - Average energy level</option>
+                            <option value="low">Low - Feeling a bit tired</option>
+                            <option value="very-low">Very Low - Exhausted or drained</option>
+                        </select>
+                    </div>
+
+                    <!-- Sleep Quality -->
+                    <div class="form-group">
+                        <label for="sleep">Sleep Quality (Last Night)</label>
+                        <select name="sleep" id="sleep" class="form-control">
+                            <option value="">Select sleep quality</option>
+                            <option value="excellent">Excellent - Woke up refreshed</option>
+                            <option value="good">Good - Slept well overall</option>
+                            <option value="fair">Fair - Some difficulty sleeping</option>
+                            <option value="poor">Poor - Restless night</option>
+                            <option value="very-poor">Very Poor - Barely slept</option>
+                        </select>
+                    </div>
+
+                    <!-- Stress Level -->
+                    <div class="form-group">
+                        <label for="stress">Stress Level</label>
+                        <select name="stress" id="stress" class="form-control">
+                            <option value="">Select stress level</option>
+                            <option value="none">None - Feeling calm and relaxed</option>
+                            <option value="low">Low - Minimal stress</option>
+                            <option value="moderate">Moderate - Some stress but manageable</option>
+                            <option value="high">High - Feeling stressed</option>
+                            <option value="overwhelming">Overwhelming - Very stressed</option>
+                        </select>
+                    </div>
+
+                    <!-- Notes -->
+                    <div class="form-group">
+                        <label for="notes">Additional Notes (Optional)</label>
+                        <textarea name="notes" id="notes" class="form-control" 
+                                  placeholder="What's on your mind? Any specific events, thoughts, or feelings you'd like to note..."></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Save Mood Entry
+                    </button>
+                </form>
+            </div>
+
+            <!-- Recent Entries -->
+            <div class="card" style="margin-top: 40px;">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-history"></i> Recent Mood Entries</h3>
+                </div>
+                <div class="card-body">
+                    <div id="recentEntries">
+                        <p class="text-muted">No mood entries yet. Start by tracking your mood above!</p>
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <button onclick="window.wellnessApp.exportMoodData()" class="btn btn-secondary">
+                            <i class="fas fa-download"></i> Export Data
+                        </button>
+                        <a href="dashboard.html" class="btn btn-primary" style="margin-left: 10px;">
+                            <i class="fas fa-chart-bar"></i> View Dashboard
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tips Section -->
+            <div class="card" style="margin-top: 40px;">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-lightbulb"></i> Mood Tracking Tips</h3>
+                </div>
+                <div class="card-body">
+                    <div class="tips-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                        <div class="tip-item">
+                            <h4><i class="fas fa-clock" style="color: var(--primary-color);"></i> Track Consistently</h4>
+                            <p>Try to log your mood at the same time each day for more accurate patterns.</p>
+                        </div>
+                        <div class="tip-item">
+                            <h4><i class="fas fa-heart" style="color: var(--primary-color);"></i> Be Honest</h4>
+                            <p>There's no "right" mood. Be honest about how you're feeling.</p>
+                        </div>
+                        <div class="tip-item">
+                            <h4><i class="fas fa-notes-medical" style="color: var(--primary-color);"></i> Add Context</h4>
+                            <p>Use the notes section to record what might be influencing your mood.</p>
+                        </div>
+                        <div class="tip-item">
+                            <h4><i class="fas fa-chart-line" style="color: var(--primary-color);"></i> Look for Patterns</h4>
+                            <p>Review your dashboard regularly to identify trends and triggers.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-heart"></i>
+                    <span>Wellness Companion</span>
+                </div>
+                <div class="footer-links">
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="#privacy">Privacy</a>
+                    <a href="#terms">Terms</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AI Youth Wellness Companion. Powered by Google Services.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Page-specific functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            loadRecentEntries();
+        });
+
+        function loadRecentEntries() {
+            const container = document.getElementById('recentEntries');
+            const moodData = JSON.parse(localStorage.getItem('wellnessMoodData') || '[]');
+            
+            if (moodData.length === 0) {
+                container.innerHTML = '<p style="color: var(--text-secondary);">No mood entries yet. Start by tracking your mood above!</p>';
+                return;
+            }
+
+            // Sort by timestamp, most recent first
+            const recentEntries = moodData.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp)).slice(0, 5);
+            
+            const entriesHTML = recentEntries.map(entry => {
+                const moodIcons = {
+                    'very-happy': '😄',
+                    'happy': '😊',
+                    'neutral': '😐',
+                    'sad': '😢',
+                    'very-sad': '😭'
+                };
+
+                const moodLabels = {
+                    'very-happy': 'Very Happy',
+                    'happy': 'Happy',
+                    'neutral': 'Neutral',
+                    'sad': 'Sad',
+                    'very-sad': 'Very Sad'
+                };
+
+                return `
+                    <div class="mood-entry" style="padding: 15px; border: 1px solid var(--border); border-radius: var(--border-radius-sm); margin-bottom: 15px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <span style="font-size: 1.5rem;">${moodIcons[entry.mood]}</span>
+                                <strong>${moodLabels[entry.mood]}</strong>
+                            </div>
+                            <small style="color: var(--text-secondary);">${getTimeAgo(entry.timestamp)}</small>
+                        </div>
+                        ${entry.energy ? `<p><strong>Energy:</strong> ${entry.energy.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}</p>` : ''}
+                        ${entry.sleep ? `<p><strong>Sleep:</strong> ${entry.sleep.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}</p>` : ''}
+                        ${entry.stress ? `<p><strong>Stress:</strong> ${entry.stress.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}</p>` : ''}
+                        ${entry.notes ? `<p><strong>Notes:</strong> ${entry.notes}</p>` : ''}
+                    </div>
+                `;
+            }).join('');
+
+            container.innerHTML = entriesHTML;
+        }
+    </script>
+</body>
+</html>
